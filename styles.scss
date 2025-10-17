@@ -801,3 +801,26 @@ body.is-scrolled .home__title {
   .skills__data:hover .skills__tooltip, .skills__data.is-open .skills__tooltip{ transform: translateY(0) scale(1); }
   .skills__tooltip::after{ bottom: auto; top: -8px; left:24px; border-top-color: transparent; border-bottom-color:#fff; }
 }
+
+@media (max-width: 768px){
+  .skills__data{ cursor: pointer; }
+  .skills__tooltip{
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin-top: .5rem;
+    transform: none !important;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(14,36,49,.12);
+    transition: max-height .3s ease, opacity .2s ease, margin .2s ease;
+  }
+  .skills__data.is-open .skills__tooltip{
+    opacity: 1;
+    visibility: visible;
+    max-height: 600px;
+  }
+  .skills__tooltip::after{ display: none; }
+}
