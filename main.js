@@ -176,3 +176,20 @@ window.addEventListener('scroll', function () {
     notice.style.color = '#2c3e50';
   });
 })();
+// ===== Mobile: tap a skill row to expand its details (accordion) =====
+(function(){
+  const rows = document.querySelectorAll('.skills__data');
+  if (!rows.length) return;
+  const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+
+  const onTap = (row) => {
+    if (!isMobile()) return;            // only on phones/tablets
+    // close others, toggle current
+    rows.forEach(r => { if (r !== row) r.classList.remove('is-open'); });
+    row.classList.toggle('is-open');
+  };
+
+  rows.forEach(row => {
+    row.addEventListener('click', () => onTap(row), { passive: true });
+  });
+})();
