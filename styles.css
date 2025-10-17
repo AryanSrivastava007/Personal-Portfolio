@@ -766,3 +766,26 @@ body.is-scrolled .home__title {
   line-height: 1.4rem;
   color: #e0e0e0;
 }
+/* ===== Mobile fix: tooltips become accordion blocks (no overlap) ===== */
+@media (max-width: 768px){
+  .skills__data{ cursor: pointer; }
+  .skills__tooltip{
+    position: static;            /* take normal flow below the row */
+    width: 100%;
+    max-width: 100%;
+    margin-top: .5rem;
+    transform: none !important;  /* kill translate animations */
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;               /* collapsed by default */
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(14,36,49,.12);
+    transition: max-height .3s ease, opacity .2s ease, margin .2s ease;
+  }
+  .skills__data.is-open .skills__tooltip{
+    opacity: 1;
+    visibility: visible;
+    max-height: 600px;          /* enough space for content */
+  }
+  .skills__tooltip::after{ display: none; }
+}
